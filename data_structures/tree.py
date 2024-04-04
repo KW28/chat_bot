@@ -1,9 +1,9 @@
        
 class Node:
-    def __init__(self, value, parent, children=[]) -> None:
+    def __init__(self, value, parent) -> None:
         self.value = value
         self.parent = parent
-        self.children = children
+        self.children = []
         
     def has_child(self):
         if self.children == []:
@@ -11,8 +11,8 @@ class Node:
         else:
             return True
         
-    def create_child(self, value=None, children=[]):
-        new_child = Node(value, self, children)
+    def create_child(self, value=None):
+        new_child = Node(value, self)
         self.children.append(new_child)
         return new_child
     
@@ -29,4 +29,3 @@ class Node:
         if self.parent == None:
             return self
         return self.parent.get_root()
-    
