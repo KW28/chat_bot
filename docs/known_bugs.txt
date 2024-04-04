@@ -1,0 +1,3 @@
+- cannot name a plugin more than one word
+
+- colored terminal does not work on windows
