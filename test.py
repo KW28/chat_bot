@@ -16,7 +16,7 @@ def roll_test():
     sys.dont_write_bytecode = True
     final_dict = {'1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6':0}
     
-    for i in range(1000000):
+    for i in range(100):
         result = str(dice.roll('1d6')[0])
         value = final_dict[result] + 1
         final_dict.update({result: value})

@@ -82,6 +82,7 @@ def create_parse_tree(node, letters, i):
     
     return create_parse_tree(node, letters, i+1)
 
+
 def evaluate_parse_tree(node):
     
     if node.parent == None:
@@ -93,5 +94,9 @@ def evaluate_parse_tree(node):
     if node.value == SPLIT_CHARACTER:
         if len(node.children) == 1:
             return randint(1, int(node.children[0].value))
-        
-        return randint(int(node.children[0].value), int(node.children[1].value))
+
+        if len(node.children) == 2:
+            final_rolls = []
+            for i in range(int(node.children[0].value)):
+                final_rolls.append(randint(1, int(node.children[1].value)))
+            return final_rolls

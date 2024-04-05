@@ -3,8 +3,10 @@ from constant_values import *
 from cmd import Cmd
 from functools import partial
 import os
+import sys
 
 class VirtualAssistant(Cmd):
+    sys.dont_write_bytecode = True
     PROMPT_CHAR = '~> '
     print(f'{LIGHT_BLUE}Hi, How Can I Help You?')
     prompt = PROMPT_CHAR

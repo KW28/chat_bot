@@ -1,4 +1,5 @@
-       
+import sys
+sys.dont_write_bytecode = True
 class Node:
     def __init__(self, value, parent) -> None:
         self.value = value
