@@ -1,5 +1,5 @@
 from plugin_manager import PluginManager
-from text_colors import *
+from constant_values import *
 from cmd import Cmd
 from functools import partial
 import os

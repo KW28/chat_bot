@@ -19,7 +19,7 @@ def plugin(name):
 
 class PluginModel(IPlugin):
     
-    def __init__(self):
+    def __init__(self, *args):
         super(IPlugin, self).__init__()
         
     def run(self, string, *args):

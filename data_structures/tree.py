@@ -20,7 +20,10 @@ class Node:
         self.children.pop(target)
     
     def __str__(self, level=0):
-        ret = "\t"*level+repr(self.value)+"\n"
+        if level == 0:
+            ret = repr(self.value)
+        else:
+            ret =  "\n" + "     " * (level - 1) + "|" + "----" + repr(self.value)
         for child in self.children:
             ret += child.__str__(level+1)
         return ret

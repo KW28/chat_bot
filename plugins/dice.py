@@ -1,22 +1,21 @@
 from plugin import plugin
 from data_structures import tree as DataTree
+from constant_values import SPLIT_CHARACTER, END_CHARACTER
+from random import randint
+import sys
 
-
-#SPLIT_CHARACTER = '!@#$%^&*()'
-SPLIT_CHARACTER = 'd'
-END_CHARACTER = '<!>@<!>@<!>'
 
 @plugin('roll')
 def roll(line):
+    sys.dont_write_bytecode = True
     letters = [*line]
     for i in range(len(letters)):
         if letters[i] == 'd':
             letters[i] = SPLIT_CHARACTER
     letters.append(END_CHARACTER)
-    #print(letters)
     root_node = DataTree.Node(None, None)
     complete_tree = create_parse_tree(root_node, letters, 0)
-    print(complete_tree.get_root())
+    print(evaluate_parse_tree(complete_tree.get_root()))
     
 
 def create_parse_tree(node, letters, i):
@@ -67,4 +66,32 @@ def create_parse_tree(node, letters, i):
         
         node.value = letter
         return create_parse_tree(node, letters, i+1)
+    
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    #If token is a space
+    
+    if letter == ' ':
+        if node.value != None:
+            if node.value.isdigit():
+                if node.parent.value != None:
+                    return create_parse_tree(node.get_root(), letters, i+1)
             
+            
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    #If anything else is inputed
+    
+    return create_parse_tree(node, letters, i+1)
+
+def evaluate_parse_tree(node):
+    
+    if node.parent == None:
+        final_rolls = []
+        for child in node.children:
+            final_rolls.append(evaluate_parse_tree(child))
+        return final_rolls
+        
+    if node.value == SPLIT_CHARACTER:
+        if len(node.children) == 1:
+            return randint(1, int(node.children[0].value))
+        
+        return randint(int(node.children[0].value), int(node.children[1].value))
