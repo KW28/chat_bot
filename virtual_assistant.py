@@ -19,10 +19,11 @@ class VirtualAssistant(Cmd):
         
     def precmd(self, line: str):
         os.system('clear')
-        line = line.replace(',', '')
-        line = line.replace('?', '')
-        line = line.replace('!', '')
-        line = line.lower()
+        #line = line.replace(',', ' ')
+        #line = line.replace('?', ' ')
+        #line = line.replace('!', ' ')
+        #line = line.replace(';', ' ')
+        #line = line.lower()
         line = line.strip()
         
         return line

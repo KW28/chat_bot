@@ -1,5 +1,6 @@
 import sys
 sys.dont_write_bytecode = True
+
 class Node:
     def __init__(self, value, parent) -> None:
         self.value = value
@@ -18,7 +19,9 @@ class Node:
         return new_child
     
     def remove_child(self, target):
-        self.children.pop(target)
+        self.children.pop(target.index)
+        if len(self.children) > 0:
+            self.reset_children()
     
     def __str__(self, level=0):
         if level == 0:
@@ -26,10 +29,11 @@ class Node:
         else:
             ret =  "\n" + "     " * (level - 1) + "|" + "----" + repr(self.value)
         for child in self.children:
-            ret += child.__str__(level+1)
+            ret += child[0].__str__(level+1)
         return ret
     
     def get_root(self):
         if self.parent == None:
             return self
         return self.parent.get_root()
+    
