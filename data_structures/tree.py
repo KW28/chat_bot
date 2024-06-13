@@ -19,9 +19,7 @@ class Node:
         return new_child
     
     def remove_child(self, target):
-        self.children.pop(target.index)
-        if len(self.children) > 0:
-            self.reset_children()
+        self.children.pop(target)
     
     def __str__(self, level=0):
         if level == 0:

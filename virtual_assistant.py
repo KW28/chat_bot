@@ -19,6 +19,7 @@ class VirtualAssistant(Cmd):
         
     def precmd(self, line: str):
         os.system('clear')
+        
         #line = line.replace(',', ' ')
         #line = line.replace('?', ' ')
         #line = line.replace('!', ' ')

@@ -1,11 +1,9 @@
-import test
+#import test
 from virtual_assistant import VirtualAssistant
-import sys
 
 def main():
-    sys.dont_write_bytecode = True
-    #VirtualAssistant().run()
-    test.tree_index()
+    va = VirtualAssistant()
+    va.run()
 
 
 if __name__=='__main__':

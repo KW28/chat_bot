@@ -23,9 +23,19 @@ class Stack:
 
     def size(self):
         return len(self.items)
+    
+    def clear(self):
+        self.items = []
 
 
 class PDA(Stack):
-    def __init__(self) -> None:
-        super.__init__()
+    def __init__(self, end_symbol='Z') -> None:
+        super().__init__()
+        self.end_symbol = end_symbol
+        self.state = 'q0'
+        self.push(end_symbol)
+        
+    def reset(self):
+        self.clear()
+        self.push(self.end_symbol)
         self.state = 'q0'

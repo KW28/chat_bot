@@ -1,6 +1,5 @@
 from pluginmanager import PluginInterface
 import sys
-sys.dont_write_bytecode = True
 
 class PluginManager:
     def __init__(self) -> None:
